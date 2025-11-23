@@ -3,8 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morning Amell ✦</title>
     
+    <!-- --- JUDUL & DESKRIPSI LINK --- -->
+    <title>Morning Amell ✦</title>
+    <meta name="description" content="Sebuah pesan semangat spesial buat kamu hari ini! 🍈">
+
+    <!-- --- OPEN GRAPH --- -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Morning Amell ✦">
+    <meta property="og:description" content="Klik buat liat pesan spesialnya... 💌">
+    <meta property="og:image" content="thumbnail.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
     <!-- 1. ICON WEB (Favicon Melon) -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍈</text></svg>">
 
@@ -12,15 +24,14 @@
     <style>
         /* --- CORE SETUP --- */
         :root {
-            /* Tema Pink Gelap Mewah - LEBIH GLASSY */
-            /* Warna background dibuat lebih transparan (opacity 0.35) */
+            /* Tema Pink Gelap Mewah */
             --glass-bg: rgba(50, 15, 25, 0.35); 
             --glass-border: rgba(255, 255, 255, 0.1);
             --accent: #ffb7b2;
             
             /* Warna Melon Spesifik */
-            --melon-light: #d0f0c0; /* Hijau Melon Muda */
-            --melon-glow: #98fb98;  /* Hijau untuk Glow */
+            --melon-light: #d0f0c0; 
+            --melon-glow: #98fb98;  
             
             --text-main: #fff0f5; 
             --text-dim: #dcc6ce;
@@ -78,7 +89,7 @@
             box-shadow: 0 0 20px rgba(152, 251, 152, 0.2);
         }
 
-        /* --- BACKGROUND CANVAS (Akar Luar, Sakura, Partikel) --- */
+        /* --- CANVAS LAYERS --- */
         #bgCanvas {
             position: absolute;
             top: 0; left: 0;
@@ -86,7 +97,6 @@
             opacity: 1;
         }
 
-        /* --- FOREGROUND CANVAS (Kabut Asap) --- */
         #fgCanvas {
             position: absolute;
             top: 0; left: 0;
@@ -95,27 +105,20 @@
             opacity: 1; 
         }
 
-        /* --- MAIN CARD (SUPER GLASS EFFECT) --- */
+        /* --- MAIN CARD --- */
         .card {
             position: relative;
             z-index: 10;
             width: 85%;
             max-width: 420px;
             min-height: 420px;
-            
-            /* 1. Background campuran warna solid transparan + gradient kilau */
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
             background-color: var(--glass-bg);
-            
-            /* 2. Blur ditingkatkan agar makin 'frosted' */
             backdrop-filter: blur(40px);
             -webkit-backdrop-filter: blur(40px);
-            
-            /* 3. Border Highlight (Kiri Atas Terang, Kanan Bawah Gelap) */
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-top: 1px solid rgba(255, 255, 255, 0.3);
             border-left: 1px solid rgba(255, 255, 255, 0.3);
-            
             border-radius: 30px;
             padding: 40px 30px;
             display: flex;
@@ -123,14 +126,11 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            
-            /* 4. Shadow yang dalam untuk efek melayang */
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(255,255,255,0.05);
-            
             transition: all 0.4s ease;
         }
 
-        /* --- TYPOGRAPHY & SPOTLIGHT EFFECT --- */
+        /* --- TYPOGRAPHY --- */
         .spotlight-text {
             color: transparent;
             background-attachment: fixed; 
@@ -204,13 +204,12 @@
             width: 100%;
         }
 
-        /* Tombol juga dibuat lebih glass */
         .btn {
             padding: 16px 0;
             width: 100%;
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.1);
-            border-top: 1px solid rgba(255,255,255,0.2); /* Highlight tombol */
+            border-top: 1px solid rgba(255,255,255,0.2);
             color: white;
             border-radius: 12px;
             cursor: none; 
@@ -218,7 +217,7 @@
             font-size: 1rem;
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
-            backdrop-filter: blur(5px); /* Sedikit blur di tombol */
+            backdrop-filter: blur(5px);
         }
 
         .btn:hover {
@@ -319,14 +318,11 @@
         <source src="sfx.mp3" type="audio/mpeg">
     </audio>
 
-    <!-- Canvas Belakang: Akar, Sakura, Partikel -->
     <canvas id="bgCanvas"></canvas>
-    <!-- Canvas Depan: Kabut Asap (Z-Index Tinggi) -->
     <canvas id="fgCanvas"></canvas>
 
     <div class="card" id="mainCard">
         
-        <!-- SLIDE 1: INTRO -->
         <div class="slide active" id="s1">
             <div class="jp-title spotlight-text">おはよう</div>
             <div class="name-title spotlight-text">Amell.</div>
@@ -334,7 +330,6 @@
             <button class="btn primary" onclick="startExperience()">Lanjut</button>
         </div>
 
-        <!-- SLIDE 2: REALITY CHECK -->
         <div class="slide" id="s2">
             <p class="spotlight-text" style="margin-top: 10px;">Jujur, skala 1 sampai 10, seberapa siap menghadapi dunia hari ini?</p>
             <div class="btn-container">
@@ -343,7 +338,6 @@
             </div>
         </div>
 
-        <!-- SLIDE 3A: POSITIVE -->
         <div class="slide" id="s3-good">
             <div class="melon-float">🍈</div>
             <div class="jp-title spotlight-text">よかった</div>
@@ -351,35 +345,28 @@
             <button class="btn primary" onclick="next('s4')">Oke!</button>
         </div>
 
-        <!-- SLIDE 3B: NEGATIVE -->
         <div class="slide" id="s3-bad">
             <div class="jp-title spotlight-text">大丈夫</div>
             <p class="spotlight-text">Gak apa-apa. <br>Nggak harus jadi superhero setiap hari kok. Hari ini jalan pelan-pelan aja ya, jangan dipaksain.</p>
             <button class="btn primary" onclick="next('s4')">Siap.</button>
         </div>
 
-        <!-- SLIDE 4: REMINDER & JADWAL -->
         <div class="slide" id="s4">
-            <!-- Pesan ini akan diubah otomatis oleh JavaScript -->
             <p class="spotlight-text" id="dynamicMessage">Loading pesan hari ini...</p>
             <button class="btn" onclick="next('s5')">Terima kasih</button>
         </div>
 
-        <!-- SLIDE 5: ENERGY SYNC (MELON THEME) -->
         <div class="slide" id="s5">
             <p class="spotlight-text" style="margin-bottom: 15px;">Transfer energi...</p>
-            
             <div class="energy-bar-wrapper">
                 <div class="energy-fill" id="fill"></div>
             </div>
-
             <div class="tap-area" onclick="charge()" id="tapBtn">
                 <span class="tap-icon">🍈</span>
             </div>
             <p class="spotlight-text" style="font-size: 0.85rem; margin-top: 15px; opacity: 0.6;">Tap sampai penuh</p>
         </div>
 
-        <!-- SLIDE 6: OUTRO -->
         <div class="slide" id="s6">
             <div class="jp-title spotlight-text">頑張ってね</div>
             <p class="spotlight-text">Semangat, Amell.<br>Aku selalu dukung kamu dari sini.</p>
@@ -389,7 +376,7 @@
     </div>
 
     <script>
-        /* --- LOGIKA PESAN OTOMATIS BERDASARKAN HARI --- */
+        /* --- LOGIKA PESAN OTOMATIS --- */
         function setDailyMessage() {
             const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
             const date = new Date();
@@ -399,36 +386,25 @@
             const msgElement = document.getElementById('dynamicMessage');
             let scheduleMsg = "";
             
-            // LOGIKA JADWAL AMELL:
-            // Senin (1), Selasa (2), Rabu (3), Jumat (5) -> Zoom
             if (dayIndex === 1 || dayIndex === 2 || dayIndex === 3 || dayIndex === 5) {
-                // Menggunakan span nowrap agar "ngantuk. 💻✨" selalu menyatu
                 scheduleMsg = `Hari ini <strong>${dayName}</strong>, jadwalnya <strong>Zoom</strong> ya?<br>Semangat kuliah onlinenya! Jangan lupa siapin cemilan biar ga <span style="white-space: nowrap">ngantuk. 💻✨</span>`;
             } 
-            // Kamis (4) -> Masuk Kampus
             else if (dayIndex === 4) {
-                // Menggunakan span nowrap agar "bawaan. 🏫🎒" selalu menyatu
                 scheduleMsg = `Hari ini <strong>${dayName}</strong>, jadwal <strong>masuk kampus</strong> kan?<br>Hati-hati di jalan ya cantik, jangan lupa bawa barang <span style="white-space: nowrap">bawaan. 🏫🎒</span>`;
             } 
-            // Sabtu (6), Minggu (0) -> Weekend/Libur
             else {
-                // Menggunakan span nowrap agar "besok. 🛌💤" selalu menyatu
                 scheduleMsg = `Yeay hari ini <strong>${dayName}</strong>!<br>Waktunya istirahat atau main. Jangan lupa <em>recharge</em> energi buat <span style="white-space: nowrap">besok. 🛌💤</span>`;
             }
 
-            // Update teks di Slide 4
             msgElement.innerHTML = `
                 ${scheduleMsg}<br><br>
                 Jangan lupa minum air putih & makan.<br>
                 Aku butuh kamu tetap sehat dan waras disana.
             `;
         }
-
-        // Panggil fungsi ini saat halaman dimuat
         setDailyMessage();
 
-
-        /* --- CUSTOM CURSOR & SPOTLIGHT LOGIC --- */
+        /* --- CUSTOM CURSOR --- */
         const cursorDot = document.querySelector('[data-cursor-dot]');
         const cursorOutline = document.querySelector('[data-cursor-outline]');
         let mouseX = 0;
@@ -437,34 +413,22 @@
         window.addEventListener("mousemove", function (e) {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            
             cursorDot.style.left = `${mouseX}px`;
             cursorDot.style.top = `${mouseY}px`;
-            
-            cursorOutline.animate({
-                left: `${mouseX}px`,
-                top: `${mouseY}px`
-            }, { duration: 500, fill: "forwards" });
-
+            cursorOutline.animate({ left: `${mouseX}px`, top: `${mouseY}px` }, { duration: 500, fill: "forwards" });
             document.body.style.setProperty('--x', `${mouseX}px`);
             document.body.style.setProperty('--y', `${mouseY}px`);
-
             spawnMouseTrail(mouseX, mouseY);
         });
 
-        const interactiveElements = document.querySelectorAll('button, .tap-area');
-        interactiveElements.forEach(el => {
+        document.querySelectorAll('button, .tap-area').forEach(el => {
             el.addEventListener('mouseenter', () => { document.body.classList.add('hovering'); });
             el.addEventListener('mouseleave', () => { document.body.classList.remove('hovering'); });
         });
 
-
-        /* --- EFEK VISUAL: DUA CANVAS --- */
-        // Canvas Belakang (Akar, Sakura, Partikel)
+        /* --- EFEK CANVAS --- */
         const bgCanvas = document.getElementById('bgCanvas');
         const bgCtx = bgCanvas.getContext('2d');
-        
-        // Canvas Depan (Kabut Asap)
         const fgCanvas = document.getElementById('fgCanvas');
         const fgCtx = fgCanvas.getContext('2d');
 
@@ -473,25 +437,22 @@
         const fogs = [];      
         const particles = []; 
         const sakuras = [];   
+        const floatingMelons = []; // ARRAY BARU UNTUK MELON
         const trails = [];    
-        let outerBranches = []; // Ranting Luar (BG)
-        // Inner branches dihapus
+        let outerBranches = []; 
 
         function resize() {
             width = window.innerWidth;
             height = window.innerHeight;
-            
             bgCanvas.width = width;
             bgCanvas.height = height;
-            
             fgCanvas.width = width;
             fgCanvas.height = height;
-            
             initBranches(); 
         }
         window.addEventListener('resize', resize);
         
-        // --- Class 0: Fog / Mist (Kabut Asap di Depan) ---
+        // Class 0: Fog (Kabut Tipis)
         class Fog {
             constructor() {
                 this.x = Math.random() * width;
@@ -499,13 +460,11 @@
                 this.vx = (Math.random() - 0.5) * 0.15; 
                 this.vy = (Math.random() - 0.5) * 0.08;
                 this.size = Math.random() * 300 + 200; 
-                // Opacity diset lebih tipis
                 this.alpha = Math.random() * 0.08 + 0.02; 
             }
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                
                 if (this.x < -this.size) this.x = width + this.size;
                 if (this.x > width + this.size) this.x = -this.size;
                 if (this.y < -this.size) this.y = height + this.size;
@@ -513,10 +472,8 @@
             }
             draw(ctx) {
                 const g = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
-                // Warna kabut
                 g.addColorStop(0, `rgba(255, 230, 240, ${this.alpha})`); 
                 g.addColorStop(1, 'rgba(255, 255, 255, 0)');
-                
                 ctx.fillStyle = g;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -524,7 +481,7 @@
             }
         }
 
-        // --- Class 1: Background Dots ---
+        // Class 1: Background Dots
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
@@ -555,7 +512,7 @@
             }
         }
 
-        // --- Class 2: Falling Sakura ---
+        // Class 2: Falling Sakura
         class Sakura {
             constructor() {
                 this.x = Math.random() * width;
@@ -573,7 +530,6 @@
                 this.x += Math.sin(this.swayOffset) * 0.8; 
                 this.swayOffset += this.sway;
                 this.angle += this.spin;
-
                 if (this.y > height + 20) {
                     this.y = -20;
                     this.x = Math.random() * width;
@@ -591,7 +547,42 @@
             }
         }
 
-        // --- Class 3: Mouse Trail Sakura ---
+        // --- CLASS BARU: FLOATING MELON (MELON TERBANG) ---
+        class FloatingMelon {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height - height; // Mulai di atas layar
+                this.size = Math.random() * 25 + 15; // Ukuran font melon
+                this.speed = Math.random() * 1.2 + 0.3;
+                this.angle = Math.random() * Math.PI * 2;
+                this.spin = Math.random() * 0.02 - 0.01; // Putar pelan
+                this.sway = Math.random() * 0.01;
+                this.swayOffset = Math.random() * Math.PI * 2;
+            }
+            update() {
+                this.y += this.speed;
+                this.x += Math.sin(this.swayOffset) * 0.3;
+                this.swayOffset += this.sway;
+                this.angle += this.spin;
+
+                if (this.y > height + 50) {
+                    this.y = -50;
+                    this.x = Math.random() * width;
+                }
+            }
+            draw(ctx) {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+                ctx.font = `${this.size}px Arial`; // Gambar emoji pake font
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('🍈', 0, 0); // Gambar emoji melon
+                ctx.restore();
+            }
+        }
+
+        // Class 3: Mouse Trail
         class Trail {
             constructor(x, y) {
                 this.x = x;
@@ -624,55 +615,41 @@
             }
         }
 
-        // --- Class 4: Procedural Branches (Akar Sakura) ---
+        // Class 4: Branches (Akar)
         class BranchSystem {
             constructor(startX, startY, angle, depth, scale) {
                 this.segments = [];
                 this.flowers = [];
                 this.generate(startX, startY, angle, depth, scale * 12); 
             }
-
             generate(x, y, angle, depth, thickness) {
                 if (depth === 0) {
-                    if (Math.random() < 0.7) {
-                        this.flowers.push({x, y, size: Math.random() * 4 + 3});
-                    }
+                    if (Math.random() < 0.7) this.flowers.push({x, y, size: Math.random() * 4 + 3});
                     return;
                 }
-
                 const len = Math.random() * 40 + 30;
                 const endX = x + Math.cos(angle) * len;
                 const endY = y + Math.sin(angle) * len;
-
-                this.segments.push({
-                    x1: x, y1: y, x2: endX, y2: endY, 
-                    thickness: thickness,
-                    depth: depth
-                });
-
+                this.segments.push({x1: x, y1: y, x2: endX, y2: endY, thickness: thickness});
                 const subBranches = Math.floor(Math.random() * 2) + 1; 
                 for (let i = 0; i < subBranches; i++) {
                     const newAngle = angle + (Math.random() - 0.5) * 0.8; 
                     this.generate(endX, endY, newAngle, depth - 1, thickness * 0.7);
                 }
             }
-
             draw(ctx) {
                 this.segments.forEach(seg => {
                     ctx.beginPath();
                     ctx.moveTo(seg.x1, seg.y1);
                     ctx.lineTo(seg.x2, seg.y2);
-                    
                     ctx.lineWidth = seg.thickness;
                     ctx.strokeStyle = 'rgba(40, 10, 20, 0.8)'; 
                     ctx.lineCap = 'round';
                     ctx.stroke();
-
                     ctx.lineWidth = seg.thickness * 0.6;
                     ctx.strokeStyle = 'rgba(90, 40, 50, 0.9)'; 
                     ctx.stroke();
                 });
-
                 this.flowers.forEach(f => {
                     ctx.beginPath();
                     ctx.arc(f.x, f.y, f.size, 0, Math.PI * 2);
@@ -687,9 +664,6 @@
 
         function initBranches() {
             outerBranches = [];
-            
-            // --- 1. RANTING LUAR (Di Background Canvas) ---
-            // 4 Sudut Layar
             outerBranches.push(new BranchSystem(0, 0, Math.PI/4, 7, 1.1)); 
             outerBranches.push(new BranchSystem(width, 0, Math.PI * 0.75, 7, 1.1));
             outerBranches.push(new BranchSystem(0, height, -Math.PI/4, 7, 1.1));
@@ -697,49 +671,42 @@
         }
 
         function spawnMouseTrail(x, y) {
-            if (Math.random() < 0.2) { 
-                trails.push(new Trail(x, y));
-            }
+            if (Math.random() < 0.2) trails.push(new Trail(x, y));
         }
 
-        // --- Init Objects ---
         resize(); 
         for(let i=0; i<60; i++) particles.push(new Particle()); 
         for(let i=0; i<25; i++) sakuras.push(new Sakura());
-        // Kabut dikurangi drastis jadi cuma 5-6 partikel & lebih tipis
-        for(let i=0; i<6; i++) fogs.push(new Fog());     
+        // TAMBAH MELON TERBANG (10 buah)
+        for(let i=0; i<10; i++) floatingMelons.push(new FloatingMelon());
+        for(let i=0; i<5; i++) fogs.push(new Fog());     
 
         function animate() {
-            // Clear Background Canvas
             bgCtx.clearRect(0, 0, width, height);
-            // Clear Foreground Canvas
             fgCtx.clearRect(0, 0, width, height);
 
-            // 1. DRAW BACKGROUND LAYER
-            // Ranting Luar
+            // Layer 1: Background
             outerBranches.forEach(b => b.draw(bgCtx));
-            // Partikel & Sakura Jatuh
             particles.forEach(p => { p.update(); p.draw(bgCtx); });
             sakuras.forEach(s => { s.update(); s.draw(bgCtx); });
-            // Jejak Mouse
+            
+            // Gambar Melon Terbang (di Background juga)
+            floatingMelons.forEach(m => { m.update(); m.draw(bgCtx); });
+
             for (let i = trails.length - 1; i >= 0; i--) {
                 const t = trails[i];
                 t.update();
                 t.draw(bgCtx);
-                if (t.life <= 0) {
-                    trails.splice(i, 1);
-                }
+                if (t.life <= 0) trails.splice(i, 1);
             }
 
-            // 2. DRAW FOREGROUND LAYER (Di atas Kartu)
-            // Kabut Asap
+            // Layer 2: Foreground (Asap)
             fogs.forEach(f => { f.update(); f.draw(fgCtx); });
 
             requestAnimationFrame(animate);
         }
         animate();
 
-        /* --- LOGIC AUDIO --- */
         function playClick() {
             const sfx = document.getElementById('clickSound');
             sfx.currentTime = 0; 
